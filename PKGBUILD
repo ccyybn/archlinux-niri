@@ -2,7 +2,7 @@
 
 pkgname=niri
 pkgver=0.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A scrollable-tiling Wayland compositor"
 arch=(x86_64)
 url="https://github.com/YaLTeR/niri"
@@ -67,7 +67,7 @@ package() {
   cd $pkgname-$pkgver
   install -vDm 755 {target/release/$pkgname,resources/$pkgname-session} -t "$pkgdir/usr/bin/"
   install -vDm 644 resources/$pkgname{.service,-shutdown.target} -t "$pkgdir/usr/lib/systemd/user/"
-  install -vDm 644 resources/$pkgname.desktop -t "$pkgname/usr/share/wayland-sessions/"
-  install -vDm 644 resources/$pkgname-portals.conf -t "$pkgname/usr/share/xdg-desktop-portal/"
+  install -vDm 644 resources/$pkgname.desktop -t "$pkgdir/usr/share/wayland-sessions/"
+  install -vDm 644 resources/$pkgname-portals.conf -t "$pkgdir/usr/share/xdg-desktop-portal/"
   install -vDm 644 resources/default-config.kdl README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
