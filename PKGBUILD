@@ -2,7 +2,7 @@
 
 pkgname=niri
 pkgver=0.1.5
-pkgrel=3
+pkgrel=4
 pkgdesc="A scrollable-tiling Wayland compositor"
 arch=(x86_64)
 url="https://github.com/YaLTeR/niri"
@@ -54,7 +54,7 @@ build() {
   cd $pkgname-$pkgver
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release
 }
 
 check() {
