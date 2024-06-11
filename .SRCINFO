@@ -6,6 +6,7 @@ pkgbase = niri
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = clang
+	makedepends = git
 	makedepends = rust
 	depends = cairo
 	depends = gcc-libs

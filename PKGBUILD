@@ -25,6 +25,7 @@ depends=(
 )
 makedepends=(
   clang
+  git
   rust
 )
 optdepends=(
@@ -54,6 +55,7 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
+  export NIRI_BUILD_COMMIT="$(zcat ../$pkgname-$pkgver.tar.gz | git get-tar-commit-id | cut -c1-7)"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --features default
