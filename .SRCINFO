@@ -1,6 +1,6 @@
 pkgbase = niri
 	pkgdesc = A scrollable-tiling Wayland compositor
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/YaLTeR/niri
 	arch = x86_64
@@ -31,8 +31,8 @@ pkgbase = niri
 	optdepends = xdg-desktop-portal-gtk: a suggested XDG desktop portal
 	optdepends = xdg-desktop-portal-gnome: a XDG desktop portal required for screencasting
 	options = !lto
-	source = niri-0.1.6.tar.gz::https://github.com/YaLTeR/niri/archive/refs/tags/v0.1.6.tar.gz
-	sha512sums = ed83a62552e3a7b049ec03aff2e8e191eb383584f1789f15fe94cce8df847a0de7b3917bd5b64fa1c8e6392de52bb81caa92472a3e40df97ac1b5562b881dca2
-	b2sums = 17ab734d3412b4da4e0eca7a3dcbbb7210140ef9ae7a6d4bcd9ca7177128073c9385a59776ab2903e4ac70e158a5860c310519f0b5768721bbee483bad9ad0f4
+	source = niri-0.1.7.tar.gz::https://github.com/YaLTeR/niri/archive/refs/tags/v0.1.7.tar.gz
+	sha512sums = cd1067dc0a2a11920b33af8e13823147d7a0e7a206cf9ff94a0c410c8414c6c70db0c21d1a08d0e0935edf04e12e3fba5e748ac8f430c7bc63e6d6b84c2141dd
+	b2sums = 5d547424248d547587f0ec1e647f1265f334e49b8a1dc3d133b43707c7789ce12c5e18e9e42de87fa897e71332353a313af791574ac2e002d39b6c5c6b2441f8
 
 pkgname = niri
