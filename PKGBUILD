@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
 pkgname=niri
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="A scrollable-tiling Wayland compositor"
 arch=(x86_64)
@@ -41,8 +41,8 @@ optdepends=(
 # NOTE: linking issues with LTO enabled
 options=(!lto)
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('cd1067dc0a2a11920b33af8e13823147d7a0e7a206cf9ff94a0c410c8414c6c70db0c21d1a08d0e0935edf04e12e3fba5e748ac8f430c7bc63e6d6b84c2141dd')
-b2sums=('5d547424248d547587f0ec1e647f1265f334e49b8a1dc3d133b43707c7789ce12c5e18e9e42de87fa897e71332353a313af791574ac2e002d39b6c5c6b2441f8')
+sha512sums=('191e9a781a1d193cc49e3609bfb00a4915e74526ba9d4db8e091e49b515b8b7fc9292706b0cb0bb23321629a92f9ba624a0b13b80827e126ed487ffb780ad963')
+b2sums=('3558f2664148bd255b592c5809ee26db459f2f70d58686b62c96ca4bcb4d7ea7651e737fda1bcc27fe095269db235aa8ed2fc719aef62ed4ce69c7883a04e054')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -60,7 +60,7 @@ build() {
 check() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features
+  cargo test --all --exclude niri-visual-tests --frozen
 }
 
 package() {
