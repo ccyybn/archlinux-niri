@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
 pkgname=niri
-pkgver=0.1.10
+pkgver=0.1.10.1
 pkgrel=1
 pkgdesc="A scrollable-tiling Wayland compositor"
 arch=(x86_64)
@@ -42,8 +42,8 @@ optdepends=(
 # NOTE: linking issues with LTO enabled
 options=(!lto)
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('e596e7113f05fd160ff123225e76abf13ac1157d267e9d479ab2e52c38268b478eb7efe0d300a89bdab031f8efe35a28608eda8757671dce6de1d411c2bbdf93')
-b2sums=('46d671684019e875042680cf6062b2037ef682dfa5fe918b41fcd8228a806d3d9034321b911854bda58a7a496f4c368b68d54bfe7ec5be0fbbd4abf942eaf1d7')
+sha512sums=('ba816350bad30debcb961d6c516c96a0a732621e78e08f7f04bbf3bee46cb463318a59acf532660288022a247cfcd636d59159b66fd01c1c702d58f8ddf44e6a')
+b2sums=('394cce3c11d19ef65d450a0e402e3c97affdff798340bb37aba90ea9b49c4cb5e7417873bd0e66bafb2ff035d71ddfca14fb91a86aa997dc23534bd1eff48035')
 
 prepare() {
   cd $pkgname-$pkgver
