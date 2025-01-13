@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
 pkgname=niri
-pkgver=0.1.10.1
+pkgver=25.01
 pkgrel=1
 pkgdesc="A scrollable-tiling Wayland compositor"
 arch=(x86_64)
@@ -42,8 +42,8 @@ optdepends=(
 # NOTE: linking issues with LTO enabled
 options=(!lto)
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('ba816350bad30debcb961d6c516c96a0a732621e78e08f7f04bbf3bee46cb463318a59acf532660288022a247cfcd636d59159b66fd01c1c702d58f8ddf44e6a')
-b2sums=('394cce3c11d19ef65d450a0e402e3c97affdff798340bb37aba90ea9b49c4cb5e7417873bd0e66bafb2ff035d71ddfca14fb91a86aa997dc23534bd1eff48035')
+sha512sums=('5c555f4410659a4301151a58938cc9880a9a244af138157c0be0fb38f0e82d20e6fccccad7e47ef515d3aaa0f7ddeef5088adad3f8d0be1a99a89f822c8b7a66')
+b2sums=('b8d1b1919cc5568b38ffae225a815669dacf8fd5a9d3d6f4e3083f90e4a0ed811ffdf718166ca850655d679af428c7f4067a4973802ecdeb1e580351d2f796d9')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -61,6 +61,8 @@ build() {
 check() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
+  export XDG_RUNTIME_DIR="$(mktemp -d)"
+  export RAYON_NUM_THREADS=1  # multithreading issues: https://github.com/YaLTeR/niri/issues/953
   cargo test --all --exclude niri-visual-tests --frozen
 }
 
