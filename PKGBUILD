@@ -2,7 +2,7 @@
 
 pkgname=niri
 pkgver=25.01
-pkgrel=1
+pkgrel=2
 pkgdesc="A scrollable-tiling Wayland compositor"
 arch=(x86_64)
 url="https://github.com/YaLTeR/niri"
@@ -34,8 +34,9 @@ optdepends=(
   'mako: a suggested Wayland notification daemon'
   'org.freedesktop.secrets: for apps to rely on secrets portal'
   'swaybg: a suggested Wayland wallpaper tool'
+  'swaylock: a suggested Wayland screen locker'
   'waybar: a suggested Wayland customizable desktop bar'
-  'waylock: a suggested Wayland screen locker'
+  'xwayland-satellite: for running X11 apps in XWayland'
   'xdg-desktop-portal-gtk: a suggested XDG desktop portal'
   'xdg-desktop-portal-gnome: a XDG desktop portal required for screencasting'
 )
