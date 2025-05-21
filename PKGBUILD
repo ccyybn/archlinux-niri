@@ -65,6 +65,7 @@ check() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export XDG_RUNTIME_DIR="$(mktemp -d)"
+  export RAYON_NUM_THREADS=1  # required so we can build in environments with _many_ threads
   cargo test --all --exclude niri-visual-tests --frozen
 }
 
