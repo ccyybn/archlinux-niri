@@ -3,7 +3,7 @@
 
 pkgname=niri
 pkgver=25.05.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A scrollable-tiling Wayland compositor"
 arch=(x86_64)
 url="https://github.com/YaLTeR/niri"
@@ -60,6 +60,12 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --features default
+
+  # generate shell completions
+  for shell in bash fish zsh; do
+    cargo run --frozen --release --bin niri -- \
+      completions "$shell" > "$shell-completions"
+  done
 }
 
 check() {
@@ -77,4 +83,9 @@ package() {
   install -vDm 644 resources/$pkgname.desktop -t "$pkgdir/usr/share/wayland-sessions/"
   install -vDm 644 resources/$pkgname-portals.conf -t "$pkgdir/usr/share/xdg-desktop-portal/"
   install -vDm 644 resources/default-config.kdl README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  # shell auto-completions
+  install -vDm 644 bash-completions "$pkgdir/usr/share/bash-completion/completions/niri"
+  install -vDm 644 fish-completions "$pkgdir/usr/share/fish/vendor_completions.d/niri.fish"
+  install -vDm 644 zsh-completions "$pkgdir/usr/share/zsh/site-functions/_niri"
+
 }
