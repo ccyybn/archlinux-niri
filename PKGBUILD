@@ -50,15 +50,12 @@ b2sums=('012c44351e6fa0e8631b3c44243da119cd03eb41a5ab81c787961df9f3456acb73c3cbb
 
 prepare() {
   cd $pkgname-$pkgver
-  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd $pkgname-$pkgver
   export NIRI_BUILD_COMMIT="$(zcat ../$pkgname-$pkgver.tar.gz | git get-tar-commit-id | cut -c1-7)"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
   cargo build --frozen --release --features default
 
   # generate shell completions
@@ -70,7 +67,6 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  export RUSTUP_TOOLCHAIN=stable
   export XDG_RUNTIME_DIR="$(mktemp -d)"
   export RAYON_NUM_THREADS=1  # required so we can build in environments with _many_ threads
   cargo test --all --exclude niri-visual-tests --frozen
