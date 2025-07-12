@@ -43,8 +43,6 @@ optdepends=(
   'xdg-desktop-portal-gnome: a XDG desktop portal required for screencasting'
 )
 provides=(wayland-compositor)
-# NOTE: linking issues with LTO enabled
-options=(!lto)
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
 sha512sums=('63f6f6e651d2a399259354f5a80fd8815c2be9c1c6b7d5038c03d89fac5966596d0da8b36d83fa7ea85b192e77e0ddfcf40ee9244a2c44cd55776a7a3f54de35')
 b2sums=('012c44351e6fa0e8631b3c44243da119cd03eb41a5ab81c787961df9f3456acb73c3cbb3639d620d19d8111e954797965c2a1bf4b0b3657142e3a1ab77413d7d')
@@ -57,6 +55,7 @@ prepare() {
 build() {
   cd $pkgname-$pkgver
   export NIRI_BUILD_COMMIT="$(zcat ../$pkgname-$pkgver.tar.gz | git get-tar-commit-id | cut -c1-7)"
+  CFLAGS+=(' -ffat-lto-objects')
   cargo build --frozen --release --features default
 
   # generate shell completions
