@@ -33,6 +33,7 @@ pkgbase = niri
 	optdepends = xwayland-satellite: for running X11 apps in XWayland
 	optdepends = xdg-desktop-portal-gtk: a suggested XDG desktop portal
 	optdepends = xdg-desktop-portal-gnome: a XDG desktop portal required for screencasting
+	provides = wayland-compositor
 	options = !lto
 	source = niri-25.05.1.tar.gz::https://github.com/YaLTeR/niri/archive/refs/tags/v25.05.1.tar.gz
 	sha512sums = 63f6f6e651d2a399259354f5a80fd8815c2be9c1c6b7d5038c03d89fac5966596d0da8b36d83fa7ea85b192e77e0ddfcf40ee9244a2c44cd55776a7a3f54de35

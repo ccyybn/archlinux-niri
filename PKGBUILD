@@ -42,6 +42,7 @@ optdepends=(
   'xdg-desktop-portal-gtk: a suggested XDG desktop portal'
   'xdg-desktop-portal-gnome: a XDG desktop portal required for screencasting'
 )
+provides=(wayland-compositor)
 # NOTE: linking issues with LTO enabled
 options=(!lto)
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
