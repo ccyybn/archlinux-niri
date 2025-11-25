@@ -56,7 +56,7 @@ prepare() {
   # Update dependencies to libdisplay-info/libdisplay-info-sys to v0.3.0
   patch -Np1 -i "$srcdir/update_to_libdisplay-info_3.patch"
 
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
