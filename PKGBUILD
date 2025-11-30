@@ -2,8 +2,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=niri
-pkgver=25.08
-pkgrel=2
+pkgver=25.11
+pkgrel=1
 pkgdesc="A scrollable-tiling Wayland compositor"
 arch=(x86_64)
 url="https://github.com/YaLTeR/niri"
@@ -43,19 +43,12 @@ optdepends=(
   'xdg-desktop-portal-gnome: a XDG desktop portal required for screencasting'
 )
 provides=(wayland-compositor)
-source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz
-        update_to_libdisplay-info_3.patch)
-sha512sums=('d8a10bb726d2e79f695544130cc9f55b1ac0f76dd9a9fb1cafb16cd7934b29a4fecf88656a3bc46ab6140aef7d2c58ed87f3ba43dfe8882df50de997283f2292'
-            '99aa04588b4d12bbbe3b0d529498c39b26c4b7122c6cb02b355e28e8502c74fd93fa7ef3adc93a8f69a2e0d2e3fb6651d0cce6f3a3e2e8db6117711ee62485f9')
-b2sums=('39758d4ba4ff721d71a116cba0b8cdcd9e1f0a024257885879b5dc31bf439e91109133cc1650f3bd2376a6f8437fb07b4ee137b0b4d8ace98a1397c6b64d74ea'
-        '3df7266232b0da713c38546a256ffc6dae6801e8d652af642a9c6ab8dc9649bf0710e75a06ff98ad3449da95fdb9d2d665cf2e82a5783c03b2c26bb10d56c514')
+source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
+sha512sums=('88adbfc1b993d692e981d811dbfcb0898fefbc184c5659a14b4f61cf9e1dcf5c9eb100e68807710ed9ed89799277fafbecf9fc3057c41d93c19dbaf96350a697')
+b2sums=('1ae432534044bbc4ab34d30d1c52e2f90e0391e5d04611c1b7ec60ccb1ba6fe87ff4c28f82de26d8eee2c839deb37c8096deec2ee7819884a23bfa4f3746c147')
 
 prepare() {
   cd $pkgname-$pkgver
-
-  # Update dependencies to libdisplay-info/libdisplay-info-sys to v0.3.0
-  patch -Np1 -i "$srcdir/update_to_libdisplay-info_3.patch"
-
   cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
