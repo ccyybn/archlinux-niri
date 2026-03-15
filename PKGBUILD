@@ -1,19 +1,20 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=niri
 pkgver=25.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A scrollable-tiling Wayland compositor"
 arch=(x86_64)
 url="https://github.com/YaLTeR/niri"
 license=(GPL-3.0-or-later)
 depends=(
   cairo
-  gcc-libs
   glib2
   glibc
   libdisplay-info
+  libgcc
   libinput
   libpipewire
   libxkbcommon
