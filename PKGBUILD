@@ -3,8 +3,8 @@
 # Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=niri
-pkgver=25.11
-pkgrel=2
+pkgver=26.04
+pkgrel=1
 pkgdesc="A scrollable-tiling Wayland compositor"
 arch=(x86_64)
 url="https://github.com/YaLTeR/niri"
@@ -45,8 +45,8 @@ optdepends=(
 )
 provides=(wayland-compositor)
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('88adbfc1b993d692e981d811dbfcb0898fefbc184c5659a14b4f61cf9e1dcf5c9eb100e68807710ed9ed89799277fafbecf9fc3057c41d93c19dbaf96350a697')
-b2sums=('1ae432534044bbc4ab34d30d1c52e2f90e0391e5d04611c1b7ec60ccb1ba6fe87ff4c28f82de26d8eee2c839deb37c8096deec2ee7819884a23bfa4f3746c147')
+sha512sums=('ae30446fbf529155907726cf2cba7402bcfc5be2032370d66f9f980efb257f29353b47d495f1218b81ac32c643f15bbb74834dc35882849a4479021b4b9fa97f')
+b2sums=('65fc4df85ab40c1a7a82900a9812c542a8a00467a0f1742f2dede50c0e323bd8957149e91b181a6c71ad077735f6a4db53451bbad0deb768f7d4840ebe798a20')
 
 prepare() {
   cd $pkgname-$pkgver
