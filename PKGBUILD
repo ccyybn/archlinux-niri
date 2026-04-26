@@ -7,7 +7,7 @@ pkgver=26.04
 pkgrel=1
 pkgdesc="A scrollable-tiling Wayland compositor"
 arch=(x86_64)
-url="https://github.com/YaLTeR/niri"
+url="https://github.com/niri-wm/niri"
 license=(GPL-3.0-or-later)
 depends=(
   cairo
