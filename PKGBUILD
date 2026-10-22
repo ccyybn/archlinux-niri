@@ -7,7 +7,7 @@ pkgver=26.04
 pkgrel=1
 pkgdesc="A scrollable-tiling Wayland compositor"
 arch=(x86_64)
-url="https://github.com/niri-wm/niri"
+url="https://github.com/ccyybn/niri"
 license=(GPL-3.0-or-later)
 depends=(
   cairo
@@ -44,18 +44,18 @@ optdepends=(
   'xdg-desktop-portal-gnome: a XDG desktop portal required for screencasting'
 )
 provides=(wayland-compositor)
-source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('ae30446fbf529155907726cf2cba7402bcfc5be2032370d66f9f980efb257f29353b47d495f1218b81ac32c643f15bbb74834dc35882849a4479021b4b9fa97f')
-b2sums=('65fc4df85ab40c1a7a82900a9812c542a8a00467a0f1742f2dede50c0e323bd8957149e91b181a6c71ad077735f6a4db53451bbad0deb768f7d4840ebe798a20')
+source=("$pkgname::git+$url.git#branch=$pkgver")
+sha512sums=('SKIP')
+b2sums=('SKIP')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd "$pkgname"
   cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
-  cd $pkgname-$pkgver
-  export NIRI_BUILD_COMMIT="$(zcat ../$pkgname-$pkgver.tar.gz | git get-tar-commit-id | cut -c1-7)"
+  cd "$pkgname"
+  export NIRI_BUILD_COMMIT="$(git rev-parse --short=7 HEAD)"
   CFLAGS+=(' -ffat-lto-objects')
   cargo build --frozen --release --features default
 
@@ -67,14 +67,14 @@ build() {
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   export XDG_RUNTIME_DIR="$(mktemp -d)"
   export RAYON_NUM_THREADS=1  # required so we can build in environments with _many_ threads
   cargo test --all --exclude niri-visual-tests --frozen
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd "$pkgname"
   install -vDm 755 {target/release/$pkgname,resources/$pkgname-session} -t "$pkgdir/usr/bin/"
   install -vDm 644 resources/$pkgname{.service,-shutdown.target} -t "$pkgdir/usr/lib/systemd/user/"
   install -vDm 644 resources/$pkgname.desktop -t "$pkgdir/usr/share/wayland-sessions/"
@@ -84,5 +84,4 @@ package() {
   install -vDm 644 bash-completions "$pkgdir/usr/share/bash-completion/completions/niri"
   install -vDm 644 fish-completions "$pkgdir/usr/share/fish/vendor_completions.d/niri.fish"
   install -vDm 644 zsh-completions "$pkgdir/usr/share/zsh/site-functions/_niri"
-
 }
